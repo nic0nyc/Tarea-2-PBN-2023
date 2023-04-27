@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//hola
+
 typedef struct vehiculo {
     char * patente;
     char * modelo;
@@ -74,6 +74,30 @@ vehiculo** leerInformacionVehiculos(){
     return lista;
 }
 
+vehiculo** agregarDeuda(vehiculo** lista){
+    FILE* deudasFile;
+    deudasFile = fopen("deudas.txt", "r");
+
+    char line[200];
+    while(fgets(line, 199, deudasFile)){
+        char* patente;
+        patente = strtok(line, ",");
+        int deudaTemporal = atoi(strtok(NULL, ","));
+        char* pago;
+        pago = strtok(NULL, ",");
+        pago[strcspn(pago, "\n")] = 0;
+
+        for (int i = 0; i < numeroVehiculos; i++){
+            if(strcmp(patente, lista[i]->patente) == 0){
+                if(*pago == 78){
+                    lista[i]->deuda += deudaTemporal;
+                }
+            }
+        }
+    } 
+    return lista;
+} 
+
 void imprimirVehiculo(vehiculo** lista, char* patente){
 
     for (int i = 0; i < numeroVehiculos; i++)
@@ -106,15 +130,15 @@ void limpiarMemoriaLista(vehiculo ** lista){
 
         free(lista[i]);
     }
-    
+    free(lista);
 
 }
 
 int main(){
 
     vehiculo** lista = leerInformacionVehiculos();
-
-    imprimirVehiculo(lista, "GGOU88");
+    agregarDeuda(lista);
+    imprimirVehiculo(lista, "AMLK30");
 
     limpiarMemoriaLista(lista);
 
