@@ -74,7 +74,7 @@ vehiculo** leerInformacionVehiculos(){
     return lista;
 }
 
-vehiculo** agregarDeuda(vehiculo** lista){
+void agregarDeuda(vehiculo** lista){
     FILE* deudasFile;
     deudasFile = fopen("deudas.txt", "r");
 
