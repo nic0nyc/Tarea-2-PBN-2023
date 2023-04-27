@@ -1,0 +1,200 @@
+DVFY53,City,Camion,Honda,Verde,Recoleta
+LWKK31,Yaris,Camion,Toyota,Rojo,San Ramon
+NXZE09,Altima,Auto,Nissan,Rojo,Recoleta
+XPWQ17,Mustang,Moto,Ford,Azul,Macul
+NEXN34,Altima,Auto,Nissan,Rojo,Cerrillos
+IAOV77,Mustang,Camion,Ford,Negro,La Reina
+JWCR99,Accord,Camion,Honda,Blanco,Quilicura
+BIKJ50,Sentra,Camion,Nissan,Blanco,Cerro Navia
+QTRS82,Camry,Camion,Toyota,Azul,La Pintana
+MCBS05,Versa,Auto,Nissan,Rojo,Cerrillos
+WIHR90,Jetta,Auto,Volkswagen,Rojo,Pedro Aguirre Cerda
+ULDX17,Versa,Auto,Nissan,Amarillo,La Reina
+RZRT23,Versa,Camion,Nissan,Amarillo,Lo Barnechea
+GPXY69,Camry,Moto,Toyota,Rojo,Pudahuel
+AWZD43,Golf,Camion,Volkswagen,Blanco,Recoleta
+ZZTC66,Altima,Auto,Nissan,Naranjo,Cerrillos
+OLQF70,Golf,Auto,Volkswagen,Negro,Penalolen
+UQEW10,Camry,Auto,Toyota,Rojo,Cerrillos
+GXBV30,Fiesta,Auto,Ford,Azul,Quilicura
+ZIOA61,Jetta,Camion,Volkswagen,Amarillo,La Cisterna
+UVEL17,Altima,Moto,Nissan,Blanco,Penalolen
+XXDB98,Fiesta,Moto,Ford,Rojo,Estacion Central
+PTOL38,Polo,Camion,Volkswagen,Blanco,La Pintana
+XOHR25,Altima,Camion,Nissan,Rojo,Lo Prado
+MUKY54,Yaris,Camion,Toyota,Negro,Lo Espejo
+OIUA92,Focus,Auto,Ford,Azul,El Bosque
+IAQE43,Civic,Moto,Honda,Verde,San Miguel
+RXJF67,Polo,Moto,Volkswagen,Amarillo,San Miguel
+PLAR77,Fiesta,Camion,Ford,Azul,Lo Espejo
+UOYZ67,Altima,Moto,Nissan,Amarillo,San Ramon
+AMLK30,City,Moto,Honda,Blanco,Pudahuel
+SKVZ08,Corolla,Auto,Toyota,Verde,Quilicura
+DISZ33,Sentra,Camion,Nissan,Negro,La Pintana
+AMIY84,Jetta,Auto,Volkswagen,Blanco,Conchali
+IFGL21,Yaris,Camion,Toyota,Blanco,San Ramon
+PJVE79,Altima,Auto,Nissan,Rojo,La Reina
+HUDL57,Sentra,Auto,Nissan,Negro,Independencia
+VVMU99,Camry,Moto,Toyota,Amarillo,Las Condes
+UIYI85,Sentra,Moto,Nissan,Azul,El Bosque
+LMSE43,Jetta,Auto,Volkswagen,Rojo,Huechuraba
+GIUL97,Golf,Auto,Volkswagen,Naranjo,La Pintana
+FULW03,Polo,Auto,Volkswagen,Blanco,Las Condes
+NDAD39,Mustang,Auto,Ford,Azul,Pudahuel
+CQUT55,Polo,Auto,Volkswagen,Negro,Vitacura
+ORGL73,Jetta,Camion,Volkswagen,Naranjo,Vitacura
+LHOJ31,Yaris,Camion,Toyota,Negro,Providencia
+PYVP03,Focus,Moto,Ford,Naranjo,Huechuraba
+KEKV10,Fiesta,Moto,Ford,Blanco,La Cisterna
+RYTB70,Accord,Camion,Honda,Blanco,Conchali
+SLEI87,Versa,Camion,Nissan,Verde,Maipu
+MPBW61,Altima,Auto,Nissan,Naranjo,San Miguel
+RZFA76,Accord,Moto,Honda,Naranjo,Pudahuel
+OTEZ07,Mustang,Moto,Ford,Verde,Quilicura
+MRMZ79,City,Camion,Honda,Verde,Lo Espejo
+OPAY96,Sentra,Moto,Nissan,Naranjo,Pudahuel
+QIKT66,Yaris,Auto,Toyota,Rojo,Renca
+WAAO68,Civic,Moto,Honda,Blanco,Huechuraba
+QVFP60,Sentra,Auto,Nissan,Azul,Pudahuel
+JHUB52,Versa,Camion,Nissan,Verde,Cerrillos
+EVFD59,Accord,Auto,Honda,Azul,San Miguel
+QKKW17,Yaris,Auto,Toyota,Rojo,El Bosque
+GSVA47,Camry,Auto,Toyota,Azul,Providencia
+FAIP32,Sentra,Auto,Nissan,Naranjo,Huechuraba
+BNGC29,Jetta,Auto,Volkswagen,Verde,Lo Prado
+UDJX93,Sentra,Auto,Nissan,Blanco,San Miguel
+WMQY35,Golf,Camion,Volkswagen,Verde,San Joaquin
+BAPN05,Mustang,Auto,Ford,Naranjo,La Cisterna
+BCSA27,Golf,Camion,Volkswagen,Azul,Conchali
+PYHJ90,Versa,Auto,Nissan,Rojo,San Ramon
+UFVF99,Golf,Moto,Volkswagen,Azul,Pedro Aguirre Cerda
+NUHZ70,Golf,Moto,Volkswagen,Negro,Providencia
+LVAZ95,Yaris,Auto,Toyota,Negro,Lo Espejo
+PYEF17,Altima,Camion,Nissan,Azul,Cerro Navia
+MYZE51,Focus,Camion,Ford,Rojo,Penalolen
+PDEL54,Camry,Moto,Toyota,Naranjo,La Florida
+DCTO08,Versa,Camion,Nissan,Azul,Las Condes
+IEGX56,Mustang,Camion,Ford,Rojo,Quinta Normal
+WMVC73,Sentra,Auto,Nissan,Negro,San Miguel
+NIDO67,Corolla,Camion,Toyota,Blanco,Renca
+NQYB02,Camry,Camion,Toyota,Amarillo,La Florida
+EMTM53,City,Camion,Honda,Blanco,La Reina
+QHZM87,Altima,Moto,Nissan,Naranjo,Lo Prado
+COJR40,Fiesta,Moto,Ford,Verde,Cerrillos
+ZXKO41,Mustang,Moto,Ford,Rojo,Vitacura
+SVNV65,Fiesta,Camion,Ford,Verde,La Pintana
+TAWA04,Corolla,Camion,Toyota,Rojo,Santiago
+ZFMS80,Accord,Moto,Honda,Negro,Macul
+VMWX05,Polo,Camion,Volkswagen,Blanco,Cerrillos
+IWZA30,Camry,Auto,Toyota,Verde,Maipu
+SFTV49,Altima,Auto,Nissan,Amarillo,La Pintana
+AXFJ41,Golf,Moto,Volkswagen,Azul,Estacion Central
+XASJ25,Fiesta,Auto,Ford,Naranjo,Quilicura
+XUJR73,Focus,Moto,Ford,Amarillo,Independencia
+USGS25,City,Moto,Honda,Negro,Maipu
+BIET93,City,Auto,Honda,Azul,Nunoa
+QYTB92,City,Moto,Honda,Rojo,Quilicura
+RPMX13,Fiesta,Moto,Ford,Naranjo,Conchali
+LUDY80,Mustang,Camion,Ford,Blanco,San Ramon
+VKPT27,Accord,Moto,Honda,Amarillo,Macul
+GFPG84,Jetta,Moto,Volkswagen,Verde,La Florida
+SXGI92,Mustang,Camion,Ford,Naranjo,San Miguel
+DICC29,Golf,Camion,Volkswagen,Verde,San Miguel
+ZEXG87,Accord,Auto,Honda,Negro,Estacion Central
+NOJS83,Jetta,Auto,Volkswagen,Verde,Renca
+HNZG80,Focus,Camion,Ford,Rojo,Las Condes
+XFRT78,Sentra,Moto,Nissan,Blanco,Lo Espejo
+DZIJ77,Versa,Auto,Nissan,Verde,Quilicura
+JOOG94,Focus,Moto,Ford,Verde,Quilicura
+IEVE23,Fiesta,Camion,Ford,Negro,San Joaquin
+XIXP38,Jetta,Moto,Volkswagen,Amarillo,Estacion Central
+ZVLH76,City,Moto,Honda,Verde,Renca
+YQEM58,Versa,Auto,Nissan,Rojo,Independencia
+VSVT94,Versa,Moto,Nissan,Naranjo,Pudahuel
+RURY34,Accord,Camion,Honda,Rojo,Huechuraba
+HMTI63,City,Camion,Honda,Naranjo,Pudahuel
+XLTN19,Altima,Auto,Nissan,Rojo,Maipu
+SCRD06,Yaris,Moto,Toyota,Blanco,Lo Espejo
+JPDD46,Accord,Moto,Honda,Rojo,Cerrillos
+ZXTE40,Civic,Auto,Honda,Naranjo,Cerro Navia
+VBPX41,Jetta,Camion,Volkswagen,Blanco,El Bosque
+VYWZ01,Altima,Moto,Nissan,Azul,Providencia
+KLMP05,Jetta,Camion,Volkswagen,Blanco,Cerro Navia
+LJNL66,Altima,Moto,Nissan,Verde,Lo Prado
+EVWE44,Yaris,Auto,Toyota,Rojo,Independencia
+MIYH22,Mustang,Auto,Ford,Azul,Nunoa
+UQMW08,Altima,Camion,Nissan,Blanco,Conchali
+VTQB55,Golf,Auto,Volkswagen,Naranjo,Santiago
+SNWE97,Jetta,Auto,Volkswagen,Blanco,Santiago
+BVOC96,Polo,Camion,Volkswagen,Blanco,Nunoa
+HCHT49,Polo,Camion,Volkswagen,Verde,Independencia
+WHCM43,Jetta,Moto,Volkswagen,Amarillo,Estacion Central
+UGJX99,Fiesta,Moto,Ford,Verde,Estacion Central
+ENYA55,Accord,Camion,Honda,Amarillo,Nunoa
+CBDB87,Camry,Auto,Toyota,Naranjo,Santiago
+ZERQ47,Civic,Camion,Honda,Naranjo,La Pintana
+WJWO63,Yaris,Camion,Toyota,Blanco,Lo Prado
+UAZB87,Camry,Auto,Toyota,Amarillo,La Pintana
+CNYW07,Versa,Auto,Nissan,Verde,Santiago
+RZSR90,Camry,Camion,Toyota,Verde,Macul
+JAUB45,Jetta,Camion,Volkswagen,Verde,Macul
+GATP70,Sentra,Auto,Nissan,Blanco,Lo Prado
+DTBJ06,Versa,Camion,Nissan,Blanco,San Ramon
+LUCX13,Jetta,Camion,Volkswagen,Negro,La Granja
+YDKJ89,Focus,Moto,Ford,Amarillo,San Miguel
+LBCO91,Fiesta,Auto,Ford,Rojo,Pedro Aguirre Cerda
+ZKQG68,Accord,Camion,Honda,Rojo,Renca
+PJVS10,Polo,Moto,Volkswagen,Azul,Huechuraba
+IFUF50,Focus,Auto,Ford,Blanco,Providencia
+LOLW98,Jetta,Auto,Volkswagen,Verde,La Pintana
+LBDI89,Fiesta,Auto,Ford,Verde,Maipu
+XSKL05,Fiesta,Camion,Ford,Blanco,Las Condes
+LQCY09,Sentra,Moto,Nissan,Naranjo,San Miguel
+DHVU09,Polo,Auto,Volkswagen,Amarillo,San Miguel
+OXXT19,Golf,Moto,Volkswagen,Naranjo,Las Condes
+RAAP85,Civic,Camion,Honda,Blanco,Macul
+NZEW41,City,Moto,Honda,Negro,Quinta Normal
+GZVO56,Focus,Auto,Ford,Negro,San Miguel
+TACO80,Focus,Moto,Ford,Naranjo,Independencia
+IQPD41,Jetta,Auto,Volkswagen,Blanco,Vitacura
+XXLW36,Mustang,Moto,Ford,Rojo,La Reina
+FMQW73,Golf,Auto,Volkswagen,Negro,La Reina
+CVNE51,Jetta,Camion,Volkswagen,Naranjo,San Joaquin
+HOYO88,Mustang,Auto,Ford,Amarillo,San Miguel
+PIWB09,Civic,Auto,Honda,Naranjo,Quilicura
+OEJT06,Jetta,Camion,Volkswagen,Negro,Lo Barnechea
+QTKI13,Versa,Camion,Nissan,Rojo,Pudahuel
+ZESF97,Camry,Camion,Toyota,Negro,San Joaquin
+XUWT52,Accord,Moto,Honda,Azul,Penalolen
+KEYK19,Accord,Auto,Honda,Azul,Lo Prado
+YAYB64,Accord,Auto,Honda,Negro,Maipu
+UYTW34,Polo,Moto,Volkswagen,Naranjo,La Florida
+BLDO36,Focus,Moto,Ford,Rojo,Pedro Aguirre Cerda
+NNHC38,Accord,Moto,Honda,Rojo,Vitacura
+DRFB28,Accord,Camion,Honda,Rojo,La Cisterna
+ZTLO03,Polo,Moto,Volkswagen,Rojo,Pudahuel
+MWWJ46,Corolla,Auto,Toyota,Verde,Renca
+IACK58,Polo,Camion,Volkswagen,Blanco,Nunoa
+PRDQ93,Mustang,Auto,Ford,Naranjo,Lo Prado
+WVKM66,Corolla,Auto,Toyota,Azul,Penalolen
+LSZG48,Sentra,Moto,Nissan,Rojo,San Joaquin
+VCEM21,City,Auto,Honda,Amarillo,Pedro Aguirre Cerda
+VUDA98,Focus,Moto,Ford,Rojo,Macul
+YHXK04,Camry,Moto,Toyota,Verde,Las Condes
+DIRG00,Versa,Moto,Nissan,Rojo,Cerrillos
+CTMX93,City,Camion,Honda,Blanco,Quinta Normal
+GGOU88,Mustang,Moto,Ford,Verde,La Granja
+WDDD33,Camry,Camion,Toyota,Negro,El Bosque
+QFEN17,Fiesta,Auto,Ford,Rojo,La Florida
+PYUC32,Corolla,Camion,Toyota,Rojo,Renca
+VMLQ74,Accord,Camion,Honda,Amarillo,Huechuraba
+WMCL89,Sentra,Auto,Nissan,Verde,La Cisterna
+ENBH18,Jetta,Moto,Volkswagen,Verde,Recoleta
+RDHY50,Mustang,Auto,Ford,Verde,La Granja
+FIGO03,Versa,Camion,Nissan,Negro,Penalolen
+ZZMH22,Sentra,Moto,Nissan,Verde,Estacion Central
+IEDQ36,Yaris,Camion,Toyota,Rojo,Cerro Navia
+QKKI09,Fiesta,Auto,Ford,Azul,Pedro Aguirre Cerda
+TIUN44,Fiesta,Camion,Ford,Blanco,Penalolen
+NHBJ93,Jetta,Auto,Volkswagen,Amarillo,San Joaquin
+EBNV43,Civic,Auto,Honda,Verde,San Joaquin
