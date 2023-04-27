@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+//hola
 typedef struct vehiculo {
     char * patente;
     char * modelo;
