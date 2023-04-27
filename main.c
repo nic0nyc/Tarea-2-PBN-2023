@@ -95,7 +95,6 @@ vehiculo** agregarDeuda(vehiculo** lista){
             }
         }
     } 
-    return lista;
 } 
 
 void imprimirVehiculo(vehiculo** lista, char* patente){
