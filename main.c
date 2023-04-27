@@ -74,6 +74,65 @@ vehiculo** leerInformacionVehiculos(){
     return lista;
 }
 
+void agregarDeudas(vehiculo** lista){
+    vehiculo **lista;
+
+    FILE *vehiculosFile;
+
+    vehiculosFile = fopen("vehiculos.txt", "r");
+
+    char linea[200];
+
+    int i = 0;
+
+    while (fgets(linea, 200, vehiculosFile))
+    {
+
+        if(i == 0){
+            lista = malloc(1 * sizeof(vehiculo));
+        }else{
+            lista = (vehiculo**) realloc(lista, (i + 1) * sizeof(vehiculo));
+        }
+
+        lista[i] = malloc(sizeof(vehiculo));
+
+        char * patente = strtok(linea, ",");
+        lista[i]->patente = malloc(sizeof(patente)*sizeof(char));
+        strcpy(lista[i]->patente, patente);
+
+        char * modelo = strtok(NULL, ",");
+        lista[i]->modelo = malloc(sizeof(modelo)*sizeof(char));
+        strcpy(lista[i]->modelo, modelo);
+
+        char * tipo = strtok(NULL, ",");
+        lista[i]->tipo = malloc(sizeof(tipo)*sizeof(char));
+        strcpy(lista[i]->tipo, tipo);
+
+        char * marca = strtok(NULL, ",");
+        lista[i]->marca = malloc(sizeof(marca)*sizeof(char));
+        strcpy(lista[i]->marca, marca);
+
+        char * color = strtok(NULL, ",");
+        lista[i]->color = malloc(sizeof(color)*sizeof(char));
+        strcpy(lista[i]->color, color);
+
+        char * comuna = strtok(NULL, ",");
+        comuna[strcspn(comuna, "\n")] = 0;
+        lista[i]->comuna = malloc(sizeof(comuna)*sizeof(char));
+        strcpy(lista[i]->comuna, comuna);
+
+        lista[i]->deuda = 0;
+
+        i++;
+    }
+
+    fclose(vehiculosFile);
+
+    numeroVehiculos = i;
+
+    return lista;
+}
+
 void imprimirVehiculo(vehiculo** lista, char* patente){
 
     for (int i = 0; i < numeroVehiculos; i++)
@@ -107,7 +166,6 @@ void limpiarMemoriaLista(vehiculo ** lista){
         free(lista[i]);
     }
     
-
 }
 
 int main(){
