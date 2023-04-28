@@ -140,10 +140,6 @@ void ordenarAlfabeticamente(vehiculo** lista){
     char* patenteMenor = malloc(6*sizeof(char));
     for (int i = 0; i < 6; i++) patenteMenor[i] = 123;
 
-    char** patenteOrdenada;
-    patenteOrdenada = malloc(numeroVehiculos*sizeof(char *));
-    for(int i = 0; i < numeroVehiculos; i++) patenteOrdenada[i] = malloc(6*sizeof(char));
-
     int indexMenor = 0;
     for (int k = 0; k < numeroVehiculos; k++){ 
         for (int i = 0; i < numeroVehiculos; i++){
@@ -152,9 +148,6 @@ void ordenarAlfabeticamente(vehiculo** lista){
                 indexMenor = i;
             }
         }
-        
-        strcpy(patenteOrdenada[k],patenteMenor);
-        //printf("%s\n", patenteMenor);
         strcpy(lista[k]->patente, patenteMenor);
         strcpy(lista[k]->modelo, listaOrdenada[indexMenor]->modelo);
         strcpy(lista[k]->tipo, listaOrdenada[indexMenor]->tipo);
@@ -162,33 +155,24 @@ void ordenarAlfabeticamente(vehiculo** lista){
         strcpy(lista[k]->color, listaOrdenada[indexMenor]->color);
         strcpy(lista[k]->comuna, listaOrdenada[indexMenor]->comuna);
         lista[k]->deuda = listaOrdenada[indexMenor]->deuda;
-        
-        printf("%s %s %s %s %s %s %d\n", lista[k]->patente, lista[k]->modelo, lista[k]->tipo, lista[k]->marca, lista[k]->color, lista[k]->comuna, lista[k]->deuda);
-    
-        //printf("%s\n", patenteOrdenada[k]);
         strcpy(listaOrdenada[indexMenor]->patente, "{{{{{{");
         for (int i = 0; i < 6; i++) patenteMenor[i] = 123;
     }
     
     free(patenteMenor);
     limpiarMemoriaLista(listaOrdenada);
-    for (int i = 0; i < numeroVehiculos; i++){
-        free(patenteOrdenada[i]);
-    }
-    free(patenteOrdenada);
-    //return lista;
 }
 
 int main(){
 
     vehiculo** lista = leerInformacionVehiculos();
+    
     agregarDeuda(lista);
+
     ordenarAlfabeticamente(lista);
-    /*for (int i = 0; i < 5; i++){
-        printf("%s %s %s %s %s %s %d\n", lista[i]->patente, lista[i]->modelo, lista[i]->tipo, lista[i]->marca, lista[i]->color, lista[i]->comuna, lista[i]->deuda);
-    }*/
-    //vehiculo** listaOrdenada = ordenarAlfabeticamente(lista);
-    //limpiarMemoriaLista(listaOrdenada);
+    
+    for (int i = 0; i < numeroVehiculos; i++) printf("%s\n", lista[i]->patente);
+
     imprimirVehiculo(lista, "AMLK30");
 
     limpiarMemoriaLista(lista);
