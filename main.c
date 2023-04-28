@@ -135,7 +135,7 @@ void limpiarMemoriaLista(vehiculo ** lista){
 
 }
 
-int comparar(const void *a, const void *b){
+int compararDeuda(const void *a, const void *b){
 
     vehiculo *vehiculoA = *(vehiculo **)a;
     vehiculo *vehiculoB = *(vehiculo **)b;
@@ -149,7 +149,7 @@ int comparar(const void *a, const void *b){
 
 void ordenarPorDeuda(vehiculo** lista){
 
-    qsort(lista, numeroVehiculos, sizeof(vehiculo *), comparar);
+    qsort(lista, numeroVehiculos, sizeof(vehiculo *), compararDeuda);
 
 }
 
