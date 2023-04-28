@@ -137,15 +137,19 @@ void limpiarMemoriaLista(vehiculo ** lista){
 
 int comparar(const void *a, const void *b){
 
-    vehiculo *vehiculoA = (vehiculo *)a;
-    vehiculo *vehiculoB = (vehiculo *)b;
+    vehiculo *vehiculoA = *(vehiculo **)a;
+    vehiculo *vehiculoB = *(vehiculo **)b;
 
     int deudaA = vehiculoB->deuda;
     int deudaB = vehiculoA->deuda;
 
-    printf("%d - %d \n", deudaA, deudaB);
+    return (deudaA - deudaB);
 
-    return (deudaB - deudaA);
+}
+
+void ordenarPorDeuda(vehiculo** lista){
+
+    qsort(lista, numeroVehiculos, sizeof(vehiculo *), comparar);
 
 }
 
@@ -154,19 +158,12 @@ int main(){
     vehiculo** lista = leerInformacionVehiculos();
 
     agregarDeuda(lista);
-
-    for (int i = 0; i < numeroVehiculos; i++)
-    {
-        imprimirVehiculo(lista, lista[i]->patente);
-    }
     
-    qsort(lista, numeroVehiculos, sizeof(vehiculo *), comparar);
-
-    printf("\n");
+    ordenarPorDeuda(lista);
 
     for (int i = 0; i < numeroVehiculos; i++)
     {
-        printf("%s: %d\n", lista[i]->patente, lista[i]->deuda);
+        printf("(%d) %s: %d\n", i, lista[i]->patente, lista[i]->deuda);
     }
     
 
