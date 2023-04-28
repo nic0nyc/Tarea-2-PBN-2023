@@ -94,8 +94,9 @@ void agregarDeuda(vehiculo** lista){
                 }
             }
         }
-    }
-    fclose(deudasFile); 
+    } 
+
+    fclose(deudasFile);
 } 
 
 void imprimirVehiculo(vehiculo** lista, char* patente){
@@ -134,6 +135,24 @@ void limpiarMemoriaLista(vehiculo ** lista){
 
 }
 
+int compararDeuda(const void *a, const void *b){
+
+    vehiculo *vehiculoA = *(vehiculo **)a;
+    vehiculo *vehiculoB = *(vehiculo **)b;
+
+    int deudaA = vehiculoB->deuda;
+    int deudaB = vehiculoA->deuda;
+
+    return (deudaA - deudaB);
+
+}
+
+void ordenarPorDeuda(vehiculo** lista){
+
+    qsort(lista, numeroVehiculos, sizeof(vehiculo *), compararDeuda);
+
+}
+
 void ordenarAlfabeticamente(vehiculo** lista){
     vehiculo** listaOrdenada = leerInformacionVehiculos();
     agregarDeuda(listaOrdenada);
@@ -166,14 +185,19 @@ void ordenarAlfabeticamente(vehiculo** lista){
 int main(){
 
     vehiculo** lista = leerInformacionVehiculos();
-    
-    agregarDeuda(lista);
 
+    agregarDeuda(lista);
+    
+    ordenarPorDeuda(lista);
+
+    for (int i = 0; i < numeroVehiculos; i++)
+    {
+        printf("(%d) %s: %d\n", i, lista[i]->patente, lista[i]->deuda);
+    }
+    
     ordenarAlfabeticamente(lista);
     
     for (int i = 0; i < numeroVehiculos; i++) printf("%s\n", lista[i]->patente);
-
-    imprimirVehiculo(lista, "AMLK30");
 
     limpiarMemoriaLista(lista);
 
