@@ -187,14 +187,6 @@ int main(){
     vehiculo** lista = leerInformacionVehiculos();
 
     agregarDeuda(lista);
-    
-    ordenarPorDeuda(lista);
-
-    for (int i = 0; i < numeroVehiculos; i++)
-    {
-        printf("(%d) %s: %d\n", i, lista[i]->patente, lista[i]->deuda);
-    }
-    
 
     limpiarMemoriaLista(lista);
 
