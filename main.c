@@ -74,6 +74,31 @@ vehiculo** leerInformacionVehiculos(){
     return lista;
 }
 
+void agregarDeuda(vehiculo** lista){
+    FILE* deudasFile;
+    deudasFile = fopen("deudas.txt", "r");
+
+    char line[200];
+    while(fgets(line, 199, deudasFile)){
+        char* patente;
+        patente = strtok(line, ",");
+        int deudaTemporal = atoi(strtok(NULL, ","));
+        char* pago;
+        pago = strtok(NULL, ",");
+        pago[strcspn(pago, "\n")] = 0;
+
+        for (int i = 0; i < numeroVehiculos; i++){
+            if(strcmp(patente, lista[i]->patente) == 0){
+                if(*pago == 78){
+                    lista[i]->deuda += deudaTemporal;
+                }
+            }
+        }
+    } 
+
+    fclose(deudasFile);
+} 
+
 void imprimirVehiculo(vehiculo** lista, char* patente){
 
     for (int i = 0; i < numeroVehiculos; i++)
@@ -106,7 +131,25 @@ void limpiarMemoriaLista(vehiculo ** lista){
 
         free(lista[i]);
     }
-    
+    free(lista);
+
+}
+
+int comparar(const void *a, const void *b){
+
+    vehiculo *vehiculoA = *(vehiculo **)a;
+    vehiculo *vehiculoB = *(vehiculo **)b;
+
+    int deudaA = vehiculoB->deuda;
+    int deudaB = vehiculoA->deuda;
+
+    return (deudaA - deudaB);
+
+}
+
+void ordenarPorDeuda(vehiculo** lista){
+
+    qsort(lista, numeroVehiculos, sizeof(vehiculo *), comparar);
 
 }
 
@@ -114,7 +157,15 @@ int main(){
 
     vehiculo** lista = leerInformacionVehiculos();
 
-    imprimirVehiculo(lista, "GGOU88");
+    agregarDeuda(lista);
+    
+    ordenarPorDeuda(lista);
+
+    for (int i = 0; i < numeroVehiculos; i++)
+    {
+        printf("(%d) %s: %d\n", i, lista[i]->patente, lista[i]->deuda);
+    }
+    
 
     limpiarMemoriaLista(lista);
 
