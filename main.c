@@ -153,6 +153,35 @@ void ordenarPorDeuda(vehiculo** lista){
 
 }
 
+void ordenarAlfabeticamente(vehiculo** lista){
+    vehiculo** listaOrdenada = leerInformacionVehiculos();
+    agregarDeuda(listaOrdenada);
+    char* patenteMenor = malloc(6*sizeof(char));
+    for (int i = 0; i < 6; i++) patenteMenor[i] = 123;
+
+    int indexMenor = 0;
+    for (int k = 0; k < numeroVehiculos; k++){ 
+        for (int i = 0; i < numeroVehiculos; i++){
+            if (strcmp(patenteMenor, listaOrdenada[i]->patente) > 0){
+                strcpy(patenteMenor,listaOrdenada[i]->patente);
+                indexMenor = i;
+            }
+        }
+        strcpy(lista[k]->patente, patenteMenor);
+        strcpy(lista[k]->modelo, listaOrdenada[indexMenor]->modelo);
+        strcpy(lista[k]->tipo, listaOrdenada[indexMenor]->tipo);
+        strcpy(lista[k]->marca, listaOrdenada[indexMenor]->marca);
+        strcpy(lista[k]->color, listaOrdenada[indexMenor]->color);
+        strcpy(lista[k]->comuna, listaOrdenada[indexMenor]->comuna);
+        lista[k]->deuda = listaOrdenada[indexMenor]->deuda;
+        strcpy(listaOrdenada[indexMenor]->patente, "{{{{{{");
+        for (int i = 0; i < 6; i++) patenteMenor[i] = 123;
+    }
+    
+    free(patenteMenor);
+    limpiarMemoriaLista(listaOrdenada);
+}
+
 int main(){
 
     vehiculo** lista = leerInformacionVehiculos();
