@@ -153,6 +153,12 @@ void ordenarPorDeuda(vehiculo** lista){
 
 }
 
+void deudaN(vehiculo** listaOrdenadaDeudas, int n){
+    for (int i = 0; i < n; i++){
+        printf("%s: %d\n", listaOrdenadaDeudas[i]->patente, listaOrdenadaDeudas[i]->deuda);
+    }
+}
+
 void ordenarAlfabeticamente(vehiculo** lista){
     vehiculo** listaOrdenada = leerInformacionVehiculos();
     agregarDeuda(listaOrdenada);
@@ -206,17 +212,16 @@ int main(){
     agregarDeuda(lista);
     
     ordenarPorDeuda(lista);
+
+    deudaN(lista, 200);
     
-    for (int i = 0; i < numeroVehiculos; i++)
-    {
-        printf("(%d) %s: %d\n", i, lista[i]->patente, lista[i]->deuda);
-    }
+    //for (int i = 0; i < numeroVehiculos; i++) printf("(%d) %s: %d\n", i, lista[i]->patente, lista[i]->deuda);
     
     ordenarAlfabeticamente(lista);
     
-    for (int i = 0; i < numeroVehiculos; i++) printf("%s\n", lista[i]->patente);
+    //for (int i = 0; i < numeroVehiculos; i++) printf("%s\n", lista[i]->patente);
     
-    deudoresPatente(lista, "A");
+    //deudoresPatente(lista, "A");
 
     limpiarMemoriaLista(lista);
 
