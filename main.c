@@ -205,25 +205,76 @@ void deudoresPatente(vehiculo** listaOrdenadaPatente, char* simbolo){
     free(copia);
 }
 
+void deudoresComuna(vehiculo** lista, char* comuna){
+    printf("Aqui va la funcion de las comunas");
+}
+
+void menu(void){
+    printf("Elige un numero\n");
+    printf("1. Conocer la deuda de un vehiculo\n");
+    printf("2. Conocer la deuda de los n vehiculos con mas deudas y sus deudas\n");
+    printf("3. Conocer los deudores de una comuna\n");
+    printf("4. Conocer la deuda de las patentes que comiencen con cierto string\n");
+    printf("5. Salir\n");
+}
+
 int main(){
 
-    vehiculo** lista = leerInformacionVehiculos();
+    vehiculo** listaOrdenadaPatente = leerInformacionVehiculos();
+    agregarDeuda(listaOrdenadaPatente);
+    ordenarAlfabeticamente(listaOrdenadaPatente);
 
-    agregarDeuda(lista);
-    
-    ordenarPorDeuda(lista);
+    vehiculo** listaOrdenadaDeudas = leerInformacionVehiculos();
+    agregarDeuda(listaOrdenadaDeudas);
+    ordenarPorDeuda(listaOrdenadaDeudas);
 
-    deudaN(lista, 200);
-    
-    //for (int i = 0; i < numeroVehiculos; i++) printf("(%d) %s: %d\n", i, lista[i]->patente, lista[i]->deuda);
-    
-    ordenarAlfabeticamente(lista);
-    
-    //for (int i = 0; i < numeroVehiculos; i++) printf("%s\n", lista[i]->patente);
-    
-    //deudoresPatente(lista, "A");
+    void (*funcionListaChar[]) (vehiculo**, char*) = {imprimirVehiculo, deudoresComuna, deudoresPatente};
+    void (*funcionListaInt) (vehiculo**, int) = deudaN;
 
-    limpiarMemoriaLista(lista);
+    int opcion;
+    menu();
+    scanf("%d", &opcion);
+
+    while (opcion != 5){
+        if (opcion == 1){
+            char* patente = malloc(6*sizeof(char));
+            printf("Ingresa la patente del vehiculo: ");
+            scanf("%s", patente);
+            funcionListaChar[0](listaOrdenadaDeudas, patente);
+            free(patente);
+        }
+        else if(opcion == 2){
+            int n;
+            printf("Ingresa un valor para n: ");
+            scanf("%d", &n);
+            funcionListaInt(listaOrdenadaDeudas, n);
+        }
+        else if(opcion == 3){
+            char* comuna = malloc(40*sizeof(char));
+            printf("Ingresa el nombre de la comuna: ");
+            scanf("%s", comuna);
+            comuna = realloc(comuna, sizeof(comuna)*sizeof(char));
+            funcionListaChar[1](listaOrdenadaDeudas, comuna);
+            free(comuna);
+        }
+        else if(opcion == 4){
+            char* simbolo = malloc(6*sizeof(char));
+            printf("Ingresa el string de comienzo de patentes: ");
+            scanf("%s", simbolo);
+            simbolo = realloc(simbolo, sizeof(simbolo)*sizeof(char));
+            funcionListaChar[2](listaOrdenadaPatente, simbolo);
+            free(simbolo);
+        }
+        else{
+            printf("Ingresa un numero valido");
+        }
+        printf("\n");
+        menu();
+        scanf("%d", &opcion);
+    }
+
+    limpiarMemoriaLista(listaOrdenadaPatente);
+    limpiarMemoriaLista(listaOrdenadaDeudas);
 
     return 0;
 }
