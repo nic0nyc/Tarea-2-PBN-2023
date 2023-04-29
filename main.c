@@ -182,6 +182,23 @@ void ordenarAlfabeticamente(vehiculo** lista){
     limpiarMemoriaLista(listaOrdenada);
 }
 
+void deudoresPatente(vehiculo** listaOrdenadaPatente, char* simbolo){
+    char * copia = malloc(6*sizeof(char));
+    int iguales = 0;
+    for (int i = 0; i < numeroVehiculos; i++){
+        strcpy(copia, listaOrdenadaPatente[i]->patente);
+        if (copia[0] > simbolo[0]) break;
+        else{
+            if (strstr(listaOrdenadaPatente[i]->patente, simbolo) != NULL){
+                if (simbolo[0] == copia[0]){
+                    printf("%s: %d\n", listaOrdenadaPatente[i]->patente, listaOrdenadaPatente[i]->deuda);
+                }
+            }
+        }
+    }
+    free(copia);
+}
+
 int main(){
 
     vehiculo** lista = leerInformacionVehiculos();
@@ -189,7 +206,7 @@ int main(){
     agregarDeuda(lista);
     
     ordenarPorDeuda(lista);
-
+    
     for (int i = 0; i < numeroVehiculos; i++)
     {
         printf("(%d) %s: %d\n", i, lista[i]->patente, lista[i]->deuda);
@@ -198,6 +215,8 @@ int main(){
     ordenarAlfabeticamente(lista);
     
     for (int i = 0; i < numeroVehiculos; i++) printf("%s\n", lista[i]->patente);
+    
+    deudoresPatente(lista, "A");
 
     limpiarMemoriaLista(lista);
 
