@@ -150,9 +150,9 @@ int compararDeuda(const void *a, const void *b){
 
 }
 
-void ordenarPorDeuda(vehiculo** lista){
+void ordenarPorDeuda(vehiculo** lista, int n){
 
-    qsort(lista, numeroVehiculos, sizeof(vehiculo *), compararDeuda);
+    qsort(lista, n, sizeof(vehiculo *), compararDeuda);
 
 }
 
@@ -236,23 +236,37 @@ void deudoresComuna(vehiculo** lista, char* comuna){
     int encontrado = 0;
     int stopSearching = 0;
 
+    int vehiculosEncontrados = 1;
+
+    vehiculo** vehiculosComuna = malloc(1 * sizeof(vehiculo));
+
     for (int i = 0; i < numeroVehiculos; i++)
     {
         if(stopSearching) break;
 
         if(!strcmp(lista[i]->comuna, comuna)){
 
-            imprimirVehiculo(lista, lista[i]->patente);
+            vehiculosComuna = (vehiculo**) realloc(vehiculosComuna, vehiculosEncontrados * sizeof(vehiculo));
+            vehiculosComuna[vehiculosEncontrados - 1] = lista[i];
             encontrado = 1;
+            vehiculosEncontrados++;
         }else if(encontrado == 1){
             stopSearching = 1;
         }
-
-        printf("Buscando %s de %s\n", lista[i]->patente, lista[i]->comuna);
     }
     
     if(!encontrado){
         printf("No hay ningun vehiculo registrado en esa comuna");
+    }else{
+
+        ordenarPorDeuda(vehiculosComuna, vehiculosEncontrados - 1);
+
+        for (int i = 0; i < vehiculosEncontrados - 1; i++)
+        {
+            printf("%s %d\n", vehiculosComuna[i]->patente, vehiculosComuna[i]->deuda);
+        }
+        
+
     }
 
 }
@@ -274,7 +288,7 @@ int main(){
 
     vehiculo** listaOrdenadaDeudas = leerInformacionVehiculos();
     agregarDeuda(listaOrdenadaDeudas);
-    ordenarPorDeuda(listaOrdenadaDeudas);
+    ordenarPorDeuda(listaOrdenadaDeudas, numeroVehiculos);
 
     vehiculo** listaOrdenadaComunas = leerInformacionVehiculos();
     agregarDeuda(listaOrdenadaComunas);
