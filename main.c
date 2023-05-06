@@ -233,15 +233,27 @@ void ordenarPorComuna(vehiculo** lista){
 
 void deudoresComuna(vehiculo** lista, char* comuna){
     
+    int encontrado = 0;
+    int stopSearching = 0;
+
     for (int i = 0; i < numeroVehiculos; i++)
     {
+        if(stopSearching) break;
+
         if(!strcmp(lista[i]->comuna, comuna)){
 
             imprimirVehiculo(lista, lista[i]->patente);
-
+            encontrado = 1;
+        }else if(encontrado == 1){
+            stopSearching = 1;
         }
+
+        printf("Buscando %s de %s\n", lista[i]->patente, lista[i]->comuna);
     }
     
+    if(!encontrado){
+        printf("No hay ningun vehiculo registrado en esa comuna");
+    }
 
 }
 
@@ -346,7 +358,7 @@ int main(){
                     split = strtok(NULL, " ");
                     if (strcmp(split, "comuna") == 0){
                         split = &opcion[16];
-                        funcionListaChar[1](listaOrdenadaDeudas, split);
+                        funcionListaChar[1](listaOrdenadaComunas, split);
                     }
                     else if(strcmp(split, "patente") == 0){
                         split = strtok(NULL, " ");
