@@ -232,7 +232,17 @@ void ordenarPorComuna(vehiculo** lista){
 }
 
 void deudoresComuna(vehiculo** lista, char* comuna){
-    printf("Aqui va la funcion de las comunas");
+    
+    for (int i = 0; i < numeroVehiculos; i++)
+    {
+        if(!strcmp(lista[i]->comuna, comuna)){
+
+            imprimirVehiculo(lista, lista[i]->patente);
+
+        }
+    }
+    
+
 }
 
 void menu(void){
@@ -330,12 +340,12 @@ int main(){
                 }
 
             }
-            else if (n == 2){
+            else if (n >= 2){
                 split = strtok(opcion, " ");
                 if (strcmp(split, "deudores") == 0){
                     split = strtok(NULL, " ");
                     if (strcmp(split, "comuna") == 0){
-                        split = strtok(NULL, " ");
+                        split = &opcion[16];
                         funcionListaChar[1](listaOrdenadaDeudas, split);
                     }
                     else if(strcmp(split, "patente") == 0){
