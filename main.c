@@ -213,6 +213,24 @@ void deudoresPatente(vehiculo** listaOrdenadaPatente, char* simbolo){
     free(copia);
 }
 
+int compararComunas(const void *a, const void *b){
+
+    vehiculo *vehiculoA = *(vehiculo **)a;
+    vehiculo *vehiculoB = *(vehiculo **)b;
+
+    char* comunaA = vehiculoB->comuna;
+    char* comunaB = vehiculoA->comuna;
+
+    return strcmp(comunaB, comunaA);
+
+}
+
+void ordenarPorComuna(vehiculo** lista){
+
+    qsort(lista, numeroVehiculos, sizeof(vehiculo *), compararComunas);
+
+}
+
 void deudoresComuna(vehiculo** lista, char* comuna){
     printf("Aqui va la funcion de las comunas");
 }
@@ -235,6 +253,10 @@ int main(){
     vehiculo** listaOrdenadaDeudas = leerInformacionVehiculos();
     agregarDeuda(listaOrdenadaDeudas);
     ordenarPorDeuda(listaOrdenadaDeudas);
+
+    vehiculo** listaOrdenadaComunas = leerInformacionVehiculos();
+    agregarDeuda(listaOrdenadaComunas);
+    ordenarPorComuna(listaOrdenadaComunas);
 
     void (*funcionListaChar[]) (vehiculo**, char*) = {imprimirVehiculo, deudoresComuna, deudoresPatente};
     void (*funcionListaInt) (vehiculo**, int) = deudaN;
@@ -347,6 +369,7 @@ int main(){
 
     limpiarMemoriaLista(listaOrdenadaPatente);
     limpiarMemoriaLista(listaOrdenadaDeudas);
+    limpiarMemoriaLista(listaOrdenadaComunas);
 
     return 0;
 }
