@@ -334,7 +334,15 @@ int main(){
                 }
             }
             else{
-                printf("Comando invalido porque hay mas palabras de las necesarias\n");
+                split = strtok(opcion, " ");
+                split = strtok(NULL, " ");
+                if (strcmp(split, "comuna") == 0){
+                    split = strtok(NULL, " ");
+                    funcionListaChar[1](listaOrdenadaDeudas, split);
+                }
+                else{
+                    printf("Comando invalido porque hay mas palabras de las necesarias\n");
+                }
             }
         }
         printf("\n");
