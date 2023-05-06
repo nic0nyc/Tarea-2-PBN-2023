@@ -213,8 +213,48 @@ void deudoresPatente(vehiculo** listaOrdenadaPatente, char* simbolo){
     free(copia);
 }
 
+int compararComunas(const void *a, const void *b){
+
+    vehiculo *vehiculoA = *(vehiculo **)a;
+    vehiculo *vehiculoB = *(vehiculo **)b;
+
+    char* comunaA = vehiculoB->comuna;
+    char* comunaB = vehiculoA->comuna;
+
+    return strcmp(comunaB, comunaA);
+
+}
+
+void ordenarPorComuna(vehiculo** lista){
+
+    qsort(lista, numeroVehiculos, sizeof(vehiculo *), compararComunas);
+
+}
+
 void deudoresComuna(vehiculo** lista, char* comuna){
-    printf("Aqui va la funcion de las comunas");
+    
+    int encontrado = 0;
+    int stopSearching = 0;
+
+    for (int i = 0; i < numeroVehiculos; i++)
+    {
+        if(stopSearching) break;
+
+        if(!strcmp(lista[i]->comuna, comuna)){
+
+            imprimirVehiculo(lista, lista[i]->patente);
+            encontrado = 1;
+        }else if(encontrado == 1){
+            stopSearching = 1;
+        }
+
+        printf("Buscando %s de %s\n", lista[i]->patente, lista[i]->comuna);
+    }
+    
+    if(!encontrado){
+        printf("No hay ningun vehiculo registrado en esa comuna");
+    }
+
 }
 
 void menu(void){
@@ -235,6 +275,10 @@ int main(){
     vehiculo** listaOrdenadaDeudas = leerInformacionVehiculos();
     agregarDeuda(listaOrdenadaDeudas);
     ordenarPorDeuda(listaOrdenadaDeudas);
+
+    vehiculo** listaOrdenadaComunas = leerInformacionVehiculos();
+    agregarDeuda(listaOrdenadaComunas);
+    ordenarPorComuna(listaOrdenadaComunas);
 
     void (*funcionListaChar[]) (vehiculo**, char*) = {imprimirVehiculo, deudoresComuna, deudoresPatente};
     void (*funcionListaInt) (vehiculo**, int) = deudaN;
@@ -308,13 +352,13 @@ int main(){
                 }
 
             }
-            else if (n == 2){
+            else if (n >= 2){
                 split = strtok(opcion, " ");
                 if (strcmp(split, "deudores") == 0){
                     split = strtok(NULL, " ");
                     if (strcmp(split, "comuna") == 0){
-                        split = strtok(NULL, " ");
-                        funcionListaChar[1](listaOrdenadaDeudas, split);
+                        split = &opcion[16];
+                        funcionListaChar[1](listaOrdenadaComunas, split);
                     }
                     else if(strcmp(split, "patente") == 0){
                         split = strtok(NULL, " ");
@@ -355,6 +399,7 @@ int main(){
 
     limpiarMemoriaLista(listaOrdenadaPatente);
     limpiarMemoriaLista(listaOrdenadaDeudas);
+    limpiarMemoriaLista(listaOrdenadaComunas);
 
     return 0;
 }
