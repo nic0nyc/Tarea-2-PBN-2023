@@ -100,10 +100,11 @@ void agregarDeuda(vehiculo** lista){
 } 
 
 void imprimirVehiculo(vehiculo** lista, char* patente){
-
+    int patenteEncontrada = 0;
     for (int i = 0; i < numeroVehiculos; i++)
     {
         if(!strcmp(patente, lista[i]->patente)){
+            patenteEncontrada++;
             printf("---Información vehiculo----\n");
             printf("Patente: %s\n", lista[i]->patente);
             printf("Modelo: %s\n", lista[i]->modelo);
@@ -115,7 +116,9 @@ void imprimirVehiculo(vehiculo** lista, char* patente){
             printf("---------------------------\n");
         }
     }
-
+    if (patenteEncontrada ==0){
+        printf("Patente no encontrada\n");
+    }
 }
 
 void limpiarMemoriaLista(vehiculo ** lista){
@@ -191,16 +194,21 @@ void ordenarAlfabeticamente(vehiculo** lista){
 void deudoresPatente(vehiculo** listaOrdenadaPatente, char* simbolo){
     char * copia = malloc(6*sizeof(char));
     int iguales = 0;
+    int stringEncontrado = 0;
     for (int i = 0; i < numeroVehiculos; i++){
         strcpy(copia, listaOrdenadaPatente[i]->patente);
         if (copia[0] > simbolo[0]) break;
         else{
             if (strstr(listaOrdenadaPatente[i]->patente, simbolo) != NULL){
                 if (simbolo[0] == copia[0]){
+                    stringEncontrado++;
                     printf("%s: %d\n", listaOrdenadaPatente[i]->patente, listaOrdenadaPatente[i]->deuda);
                 }
             }
         }
+    }
+    if (stringEncontrado == 0){
+        printf("No hay ninguna patente que comience con el string indicado (el string debe estar en mayuscula)\n");
     }
     free(copia);
 }
@@ -210,12 +218,12 @@ void deudoresComuna(vehiculo** lista, char* comuna){
 }
 
 void menu(void){
-    printf("Elige un numero\n");
-    printf("1. Conocer la deuda de un vehiculo\n");
-    printf("2. Conocer la deuda de los n vehiculos con mas deudas y sus deudas\n");
-    printf("3. Conocer los deudores de una comuna\n");
-    printf("4. Conocer la deuda de las patentes que comiencen con cierto string\n");
-    printf("5. Salir\n");
+    printf("deuda [patente]\n");
+    printf("deuda [n]\n");
+    printf("deudores comuna [comuna]\n");
+    printf("deudores patente [string]\n");
+    printf("salir\n");
+    printf("Ingresa un comando: ");
 }
 
 int main(){
@@ -231,46 +239,110 @@ int main(){
     void (*funcionListaChar[]) (vehiculo**, char*) = {imprimirVehiculo, deudoresComuna, deudoresPatente};
     void (*funcionListaInt) (vehiculo**, int) = deudaN;
 
-    int opcion;
+    
+    char opcion[40];
     menu();
-    scanf("%d", &opcion);
+    fgets(opcion, 40, stdin);
+    opcion[strcspn(opcion, "\n")] = 0;
+    int l = strlen(opcion);
 
-    while (opcion != 5){
-        if (opcion == 1){
-            char* patente = malloc(6*sizeof(char));
-            printf("Ingresa la patente del vehiculo: ");
-            scanf("%s", patente);
-            funcionListaChar[0](listaOrdenadaDeudas, patente);
-            free(patente);
-        }
-        else if(opcion == 2){
-            int n;
-            printf("Ingresa un valor para n: ");
-            scanf("%d", &n);
-            funcionListaInt(listaOrdenadaDeudas, n);
-        }
-        else if(opcion == 3){
-            char* comuna = malloc(40*sizeof(char));
-            printf("Ingresa el nombre de la comuna: ");
-            scanf("%s", comuna);
-            comuna = realloc(comuna, sizeof(comuna)*sizeof(char));
-            funcionListaChar[1](listaOrdenadaDeudas, comuna);
-            free(comuna);
-        }
-        else if(opcion == 4){
-            char* simbolo = malloc(6*sizeof(char));
-            printf("Ingresa el string de comienzo de patentes: ");
-            scanf("%s", simbolo);
-            simbolo = realloc(simbolo, sizeof(simbolo)*sizeof(char));
-            funcionListaChar[2](listaOrdenadaPatente, simbolo);
-            free(simbolo);
-        }
+    char* split;
+    while(strcmp(opcion, "salir") != 0){
+        if (opcion[l-1] == 32) printf("Comando invalido porque el comando termina con un espacio\n");
         else{
-            printf("Ingresa un numero valido");
+            int n = 0;
+            for (int i = 0; i < l; i++){
+                if (opcion[i] == 32) n++;
+            }
+            if (n == 0){
+                printf("Comando invalido\n");
+            }
+            else if (n == 1){
+                split = strtok(opcion, " ");
+                if (strcmp(split, "deuda") == 0){
+                    split = strtok(NULL, " ");
+                    if (split[0] >= 48 && split[0] <= 57){
+                        int contador = 0;
+                        for (int i = 0; i < strlen(split); i++){
+                            if (split[i] < 48 || split[i] > 57){
+                                contador++;
+                            }
+                        }
+                        if (contador == 0){
+                            int num = atoi(split);
+                            if (num == 0) printf("EL numero debe ser mayor a 0\n");
+                            else if (num > numeroVehiculos) printf("El numero maximo de vehiculos es: %d\n", numeroVehiculos);
+                            else funcionListaInt(listaOrdenadaDeudas, num);
+                        }
+                        else {
+                            printf("Comando invalido porque no es un numero\n");
+                        }
+                    }
+                    else if (split[0] >= 65 && split[0] <= 90 || split[0] >= 97 && split[0] <= 122){
+                        if (strlen(split) != 6){
+                            printf("La petente no tiene 6 caracteres\n");
+                        }
+                        else{
+                            int letras = 0;
+                            for (int i = 0; i < 4; i++){
+                                if (split[i] >= 65 && split[i] <= 90) letras++;
+                            }
+                            int digitos = 0;
+                            for (int i = 4; i < 6; i++){
+                                if (split[i] >= 48 && split[i] <= 57) digitos++;
+                            }
+                            if (letras == 4 && digitos == 2){
+                                funcionListaChar[0](listaOrdenadaDeudas, split);
+                            }
+                            else{
+                                printf("Formato de patente invalido, debe tener 4 letras mayusculas primero y 2 digitos al final\n");
+                            }
+                        }
+                    }
+                    else{
+                        printf("Comando invalido porque la siguiente palabra a deuda no es un numero o una palabra existente\n");
+                    }
+                }
+                else{
+                    printf("Comando invalido porque la primera palabra no es el string deuda (tiene que ser en minuscula)\n");
+                }
+
+            }
+            else if (n == 2){
+                split = strtok(opcion, " ");
+                if (strcmp(split, "deudores") == 0){
+                    split = strtok(NULL, " ");
+                    if (strcmp(split, "comuna") == 0){
+                        split = strtok(NULL, " ");
+                        funcionListaChar[1](listaOrdenadaDeudas, split);
+                    }
+                    else if(strcmp(split, "patente") == 0){
+                        split = strtok(NULL, " ");
+                        if (strlen(split) == 0 || strlen(split) > 6){
+                            printf("El string debe tener una longitud entre 1 y 6\n");
+                        }
+                        else{
+                            funcionListaChar[2](listaOrdenadaPatente, split);    
+                        }
+                    }
+                    else{
+                        printf("Comando invalido porque la siguiente palabra a deudores no es comuna o patente\n");    
+                    }
+                }
+                else{
+                    printf("Comando invalido porque la primera palabra no es el string deudores (tiene que ser en minuscula)\n");
+                }
+            }
+            else{
+                printf("Comando invalido porque hay mas palabras de las necesarias\n");
+            }
         }
         printf("\n");
         menu();
-        scanf("%d", &opcion);
+        split = strtok(opcion, " ");
+        fgets(opcion, 40, stdin);
+        opcion[strcspn(opcion, "\n")] = 0;
+        l = strlen(opcion);
     }
 
     limpiarMemoriaLista(listaOrdenadaPatente);
