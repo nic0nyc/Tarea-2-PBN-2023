@@ -233,39 +233,42 @@ void ordenarPorComuna(vehiculo** lista){
 
 void deudoresComuna(vehiculo** lista, char* comuna){
     
+    int encontrado = 0;
+    int stopSearching = 0;
+
     int vehiculosEncontrados = 1;
-    char * copia = malloc(30*sizeof(char));
+
     vehiculo** vehiculosComuna = malloc(1 * sizeof(vehiculo));
-    
+
     for (int i = 0; i < numeroVehiculos; i++)
     {
-        strcpy(copia, lista[i]->comuna);
-        copia[strlen(copia)-1] = 0;
+        if(stopSearching) break;
 
-        if (lista[i]->comuna[0] > comuna[0]) break;
-        else {
-            if(strcmp(copia, comuna) == 0){
-                vehiculosComuna = (vehiculo**) realloc(vehiculosComuna, vehiculosEncontrados * sizeof(vehiculo));
-                vehiculosComuna[vehiculosEncontrados - 1] = lista[i];
-                vehiculosEncontrados++;
-            }
+        if(!strcmp(lista[i]->comuna, comuna)){
+
+            vehiculosComuna = (vehiculo**) realloc(vehiculosComuna, vehiculosEncontrados * sizeof(vehiculo));
+            vehiculosComuna[vehiculosEncontrados - 1] = lista[i];
+            encontrado = 1;
+            vehiculosEncontrados++;
+        }else if(encontrado == 1){
+            stopSearching = 1;
         }
     }
-
-    if(vehiculosEncontrados == 1){
-        printf("No hay ningun vehiculo registrado en esa comuna, la comuna no existe o esta mal escrita (primera letra en mayuscula y las demas en minuscula ej: Cerro Navia)\n");
+    
+    if(!encontrado){
+        printf("No hay ningun vehiculo registrado en esa comuna");
     }else{
 
         ordenarPorDeuda(vehiculosComuna, vehiculosEncontrados - 1);
 
         for (int i = 0; i < vehiculosEncontrados - 1; i++)
         {
-            printf("%s: %d\n", vehiculosComuna[i]->patente, vehiculosComuna[i]->deuda);
+            printf("%s %d\n", vehiculosComuna[i]->patente, vehiculosComuna[i]->deuda);
         }
         
+
     }
-    
-    free(copia);
+
 }
 
 void menu(void){
@@ -369,7 +372,7 @@ int main(){
                     split = strtok(NULL, " ");
                     if (strcmp(split, "comuna") == 0){
                         split = &opcion[16];
-                        funcionListaChar[1](listaOrdenadaComunas, split);
+                        funcionListaChar[1](listaOrdenadaComunas, "Las Condes");
                     }
                     else if(strcmp(split, "patente") == 0){
                         split = strtok(NULL, " ");
@@ -392,8 +395,8 @@ int main(){
                 split = strtok(opcion, " ");
                 split = strtok(NULL, " ");
                 if (strcmp(split, "comuna") == 0){
-                    split = &opcion[16];
-                    funcionListaChar[1](listaOrdenadaComunas, split);
+                    //split = &opcion[16];
+                    funcionListaChar[1](listaOrdenadaComunas, "Las Condes");
                 }
                 else{
                     printf("Comando invalido porque hay mas palabras de las necesarias\n");
