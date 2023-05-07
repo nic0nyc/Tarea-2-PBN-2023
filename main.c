@@ -123,7 +123,7 @@ void imprimirVehiculo(vehiculo** lista, char* patente){
 
 void limpiarMemoriaLista(vehiculo ** lista){
 
-    for (int i = 0; i < numeroVehiculos; i++)
+    for (int i = 0; i < sizeof(lista) / sizeof(vehiculo *); i++)
     {
         free(lista[i]->patente);
         free(lista[i]->modelo);
@@ -240,7 +240,8 @@ void deudoresComuna(vehiculo** lista, char* comuna){
     for (int i = 0; i < numeroVehiculos; i++)
     {
         strcpy(copia, lista[i]->comuna);
-        copia[strlen(copia)-1] = 0;
+        if(copia[strlen(copia) - 1] == 13) copia[strlen(copia) - 1] = 0;
+        else copia[strlen(copia)] = 0;
 
         if (lista[i]->comuna[0] > comuna[0]) break;
         else {
@@ -265,6 +266,7 @@ void deudoresComuna(vehiculo** lista, char* comuna){
         
     }
     
+    limpiarMemoriaLista(vehiculosComuna);
     free(copia);
 }
 
