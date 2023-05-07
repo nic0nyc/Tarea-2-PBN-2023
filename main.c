@@ -264,9 +264,10 @@ void deudoresComuna(vehiculo** lista, char* comuna){
             printf("%s: %d\n", vehiculosComuna[i]->patente, vehiculosComuna[i]->deuda);
         }
         
+        limpiarMemoriaLista(vehiculosComuna);
     }
     
-    limpiarMemoriaLista(vehiculosComuna);
+    if (vehiculosEncontrados == 1) free(vehiculosComuna);
     free(copia);
 }
 
