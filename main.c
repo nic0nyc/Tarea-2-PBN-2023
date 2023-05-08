@@ -193,7 +193,6 @@ void ordenarAlfabeticamente(vehiculo** lista){
 
 void deudoresPatente(vehiculo** listaOrdenadaPatente, char* simbolo){
     char * copia = malloc(6*sizeof(char));
-    int iguales = 0;
     int stringEncontrado = 0;
     for (int i = 0; i < numeroVehiculos; i++){
         strcpy(copia, listaOrdenadaPatente[i]->patente);
@@ -321,7 +320,8 @@ int main(){
                     split = strtok(NULL, " ");
                     if (split[0] >= 48 && split[0] <= 57){
                         int contador = 0;
-                        for (int i = 0; i < strlen(split); i++){
+                        int lon = strlen(split);
+                        for (int i = 0; i < lon; i++){
                             if (split[i] < 48 || split[i] > 57){
                                 contador++;
                             }
@@ -336,7 +336,7 @@ int main(){
                             printf("Comando invalido porque no es un numero\n");
                         }
                     }
-                    else if (split[0] >= 65 && split[0] <= 90 || split[0] >= 97 && split[0] <= 122){
+                    else if ((split[0] >= 65 && split[0] <= 90) || (split[0] >= 97 && split[0] <= 122)){
                         if (strlen(split) != 6){
                             printf("La petente no tiene 6 caracteres\n");
                         }
@@ -405,7 +405,6 @@ int main(){
         }
         printf("\n");
         menu();
-        split = strtok(opcion, " ");
         fgets(opcion, 40, stdin);
         opcion[strcspn(opcion, "\n")] = 0;
         l = strlen(opcion);
