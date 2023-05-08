@@ -122,8 +122,9 @@ void imprimirVehiculo(vehiculo** lista, char* patente){
 }
 
 void limpiarMemoriaLista(vehiculo ** lista){
-
-    for (int i = 0; i < sizeof(lista) / sizeof(vehiculo *); i++)
+    int l = sizeof(lista);
+    int l2 = sizeof(vehiculo *);
+    for (int i = 0; i < (l / l2); i++)
     {
         free(lista[i]->patente);
         free(lista[i]->modelo);
